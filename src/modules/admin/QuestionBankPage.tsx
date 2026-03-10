@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Edit2, Trash2, Search, Save, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 

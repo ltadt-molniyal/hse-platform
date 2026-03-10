@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Camera, Upload, Zap } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../lib/supabase';

@@ -57,7 +57,7 @@ export default function Form6S() {
     
     setIsSubmitting(true);
     try {
-      const { data: report, error } = await supabase.from('reports').insert([{
+      const { error } = await supabase.from('reports').insert([{
         created_by: profile?.id,
         factory_id: profile?.factory_id || 'X1',
         status: 'submitted',

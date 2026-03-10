@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Home, ShieldAlert, ClipboardCheck, ListTodo, LogOut, QrCode, Zap, Database, ClipboardList } from 'lucide-react';
 import { cn } from '../lib/utils';

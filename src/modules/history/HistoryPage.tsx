@@ -1,53 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Search, Filter, FileText, CheckCircle, XCircle, AlertTriangle, User as UserIcon, Calendar, MapPin, SearchCheck, Check, X, Loader2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Search, FileText, CheckCircle, XCircle, User as UserIcon, Calendar, MapPin, SearchCheck, Check, X, Loader2 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 
-// Giả lập dữ liệu Lịch sử kiểm tra
-const MOCK_REPORTS = [
-  { 
-    id: 'R-1025', date: '2023-10-25 09:30', module: 'PCCC (BCC)', location: 'Xưởng 1 - Vị trí A', 
-    inspector: 'Nguyễn Văn A', status: 'verified', score: null,
-    details: [
-      { question: 'Ngoại quan bình', answer: 'Đạt', isError: false },
-      { question: 'Áp suất bình', answer: 'Đạt', isError: false },
-      { question: 'Hạn sử dụng', answer: 'Đạt', isError: false },
-    ],
-    image: 'https://images.unsplash.com/photo-1544490793-68d06b38c29b?auto=format&fit=crop&q=80&w=400',
-    notes: 'Bình chữa cháy trong tình trạng tốt, sẵn sàng sử dụng.'
-  },
-  { 
-    id: 'R-1026', date: '2023-10-25 10:15', module: '6S', location: 'Xưởng 2 - Toàn bộ', 
-    inspector: 'Trần Thị B', status: 'submitted', score: 85,
-    details: [
-      { question: 'Nền nhà có sạch sẽ, không dầu mỡ không?', answer: 'Có lỗi', isError: true },
-      { question: 'Dụng cụ có để đúng vị trí quy định?', answer: 'Đạt', isError: false },
-    ],
-    image: 'https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=400',
-    notes: 'Có vệt dầu lênh láng ở khu vực máy cắt số 3. Đã yêu cầu vệ sinh ngay lập tức.'
-  },
-  { 
-    id: 'R-1027', date: '2023-10-24 14:00', module: 'ELEC', location: 'Tủ điện TĐ-01', 
-    inspector: 'Lê Văn C', status: 'rejected', score: null,
-    details: [
-      { question: 'Hình dáng và vỏ ngoài tủ điện an toàn?', answer: 'Đạt', isError: false },
-      { question: 'Cáp điện có bị hở, đứt, rò rỉ điện?', answer: 'Có lỗi', isError: true },
-    ],
-    image: null,
-    notes: 'Phát hiện dây nối đất bị lỏng, nguy cơ rò điện. Đã đánh dấu đỏ.'
-  },
-  { 
-    id: 'R-1028', date: '2023-10-24 08:00', module: 'PCCC (TCC)', location: 'Xưởng 3 - Cửa chính', 
-    inspector: 'Nguyễn Văn A', status: 'verified', score: null,
-    details: [
-      { question: 'Đường vòi không lủng rách', answer: 'Đạt', isError: false },
-      { question: 'Lăng phun đầy đủ', answer: 'Đạt', isError: false },
-    ],
-    image: null,
-    notes: ''
-  },
-];
+// Constants removed due to being replaced by real data
 
 export default function HistoryPage() {
   const [filter, setFilter] = useState('ALL');
@@ -189,7 +146,7 @@ export default function HistoryPage() {
                  <tr><td colSpan={5} className="p-8 text-center text-gray-500"><Loader2 className="animate-spin inline mr-2"/> Đang tải dữ liệu...</td></tr>
                ) : filteredReports.length === 0 ? (
                  <tr><td colSpan={5} className="p-8 text-center text-gray-400 italic">Chưa có báo cáo nào được lập.</td></tr>
-               ) : filteredReports.map((r, i) => (
+               ) : filteredReports.map((r) => (
                   <tr key={r.id} className="hover:bg-gray-50/50 transition-colors">
                      <td className="p-4 font-medium text-primary-600">
                        {r.id.split('-')[0]}... <br/>

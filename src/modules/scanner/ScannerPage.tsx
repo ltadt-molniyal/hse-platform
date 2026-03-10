@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Camera, QrCode, AlertCircle } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { QrCode, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 
 export default function ScannerPage() {
   const navigate = useNavigate();
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
-  const [scanError, setScanError] = useState<string | null>(null);
+  const [scanError] = useState<string | null>(null);
 
   useEffect(() => {
     // 1. Initialize the scanner
@@ -41,7 +41,7 @@ export default function ScannerPage() {
       });
     };
 
-    const onScanFailure = (error: any) => {
+    const onScanFailure = () => {
       // ignore failures as they occur frequently in real-time scanning
     };
 
